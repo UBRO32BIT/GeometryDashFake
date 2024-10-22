@@ -8,6 +8,7 @@ TagManager:
   - Obstacle
   - ShootPosition
   - Boss
+  - EnemyShootPosition
   layers:
   - Default
   - TransparentFX

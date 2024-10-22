@@ -69,7 +69,7 @@ public class MovementController : MonoBehaviour
         {
             Flip();
         }
-        if (wallCheckpoint.position.y < -30f)
+        if (wallCheckpoint.position.y < -10f)
         {
             gameController.Die();
         }

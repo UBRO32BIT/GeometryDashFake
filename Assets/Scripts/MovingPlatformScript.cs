@@ -43,7 +43,7 @@ public class MovingPlatformScript : MonoBehaviour
     }
     private void Update()
     {
-        if (Vector2.Distance(transform.position, targetPos) < 0.05f)
+        if (Vector2.Distance(transform.position, targetPos) < 0.15f)
         {
             NextPoint();
         }

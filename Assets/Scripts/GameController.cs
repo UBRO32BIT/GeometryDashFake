@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public AudioSource playerDeathSound;
     public AudioSource checkpointSound;
     public GameObject gameOverScreen;
+    public PauseMenu pauseMenu;
 
     Vector2 checkpointPos;
     Rigidbody2D playerRb;
@@ -25,6 +26,14 @@ public class GameController : MonoBehaviour
     void Start()
     {
         checkpointPos = transform.position;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            pauseMenu.Pause();
+        }
     }
 
     public void UpdateCheckpoint(Vector2 pos)
@@ -75,11 +84,19 @@ public class GameController : MonoBehaviour
         {
             Debug.Log("GAME OVER");
             gameOverScreen.SetActive(true);
+            Time.timeScale = 0;
         }
     }
 
     public void RestartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
     }
 }

@@ -30,6 +30,7 @@ public class BossController : MonoBehaviour
     private float timeBetweenRuns = 30f;
     private float runSpeed = 5f;
 
+    private GameController gameController;
 
     private void Awake()
     {
@@ -43,6 +44,11 @@ public class BossController : MonoBehaviour
     }
     private void Update()
     {
+        if (!isAlive)
+        {
+            return;
+        }
+
         timer += Time.deltaTime;
         if (timer > 2f)
         {
@@ -114,5 +120,14 @@ public class BossController : MonoBehaviour
 
         // Disable the collider to prevent further collisions
         bossCollider.enabled = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision);
+        if (collision.CompareTag("Player"))
+        {
+            gameController.Die();
+        }
     }
 }
